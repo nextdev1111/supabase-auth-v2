@@ -21,7 +21,13 @@ const AuthForm = ({
 }: Props) => {
   return (
     <div className="w-full max-w-md space-y-8">
-      <form className="mt-8 space-y-6">
+      <form
+        className="mt-8 space-y-6"
+        onSubmit={(e) => {
+          // to prevent refreshnig when user submits the form.
+          e.preventDefault();
+        }}
+      >
         <h1 className="text-xl font-bold">Sign In</h1>
         <div className="-space-y-px rounded-md shadow-sm">
           {/* email box */}

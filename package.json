@@ -7,9 +7,12 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
+    "@supabase/auth-helpers-nextjs": "^0.5.2",
+    "@supabase/supabase-js": "^2.2.3",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.0",
     "server-only": "^0.0.1"
   },
   "devDependencies": {

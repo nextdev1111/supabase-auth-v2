@@ -7,7 +7,10 @@ if(supabaseKey == undefined || supabaseUrl == undefined){
 }
 
 // creating an object for exporting environment variables
-const environmentVariables = {
+const environmentVariables : {
+    supabaseKey: string;
+    supabaseUrl: string;
+} = {
     supabaseKey,
     supabaseUrl
 }
