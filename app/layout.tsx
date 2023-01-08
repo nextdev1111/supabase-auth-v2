@@ -1,5 +1,8 @@
 import "server-only";
 import Navbar from "../components/Navbar";
+import SupabaseListner from "../components/supabaseListener";
+import ToasterComponents from "../components/ToasterComponents";
+import createServerClient from "../lib/supabaseServerClient";
 
 import "../styles/globals.css";
 
@@ -11,6 +14,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const supabaseClient = createServerClient();
+
+  const {
+    data: { session },
+  } = await supabaseClient.auth.getSession();
+
   return (
     <html>
       <head>
@@ -27,7 +36,8 @@ export default async function RootLayout({
       </head>
       <body>
         <Navbar />
-
+        <SupabaseListner accessToken={session?.access_token} />
+        <ToasterComponents />
         {children}
       </body>
     </html>

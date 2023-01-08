@@ -1,12 +1,26 @@
 "use client";
 
 import React from "react";
+import toast from "react-hot-toast";
+import supabaseBrowserClient from "../lib/supabaseBrowserClient";
 
 type Props = {};
 
 const LogoutButton = (props: Props) => {
   const logout = async () => {
+    const loadingToast = toast.loading("logging out");
     // logic
+    const { error } = await supabaseBrowserClient.auth.signOut();
+
+    if (error) {
+      toast.error(error.message, {
+        id: loadingToast,
+      });
+    } else {
+      toast.success("You are logged.", {
+        id: loadingToast,
+      });
+    }
   };
 
   return (
